@@ -1,38 +1,12 @@
 #!/usr/bin/python3
 
-def canUnlockAll(boxes):
-    num_boxes = len(boxes)
-    unlocked_boxes = [False] * num_boxes
-    unlocked_boxes[0] = True
+canUnlockAll = __import__('0-lockboxes').canUnlockAll
 
-    stack = [0]  # Start with the first box
+boxes = [[1], [2], [3], [4], []]
+print(canUnlockAll(boxes))
 
-    while stack:
-        current_box = stack.pop()
+boxes = [[1, 4, 6], [2], [0, 4, 1], [5, 6, 2], [3], [4, 1], [6]]
+print(canUnlockAll(boxes))
 
-        for key in boxes[current_box]:
-            if key < num_boxes and not unlocked_boxes[key]:
-                unlocked_boxes[key] = True
-                stack.append(key)
-
-    return all(unlocked_boxes)
-
-
-def main():
-    # Test cases
-    boxes1 = [[1], [2], [3], []]
-    print(canUnlockAll(boxes1))  # True
-
-    boxes2 = [[1, 2], [3, 4], [0, 3], [], []]
-    print(canUnlockAll(boxes2))  # False
-
-    boxes3 = [[1], [2], [3], [], [4]]
-    print(canUnlockAll(boxes3))  # False
-
-    boxes4 = [[1], [2], [3], [4], [5]]
-    print(canUnlockAll(boxes4))  # True
-
-
-if __name__ == "__main__":
-    main()
-
+boxes = [[1, 4], [2], [0, 4, 1], [3], [], [4, 1], [5, 6]]
+print(canUnlockAll(boxes))
